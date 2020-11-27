@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow' #'UTC'
 
 USE_I18N = True
 
@@ -125,3 +125,11 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR
 
 AUTH_USER_MODEL = 'main.AdvUser'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'test.horhevah@gmail.ru'
+EMAIL_HOST_PASSWORD = 'vah247120'
+#DEFAULT_FROM_EMAIL = 'Your name'
+#DEFAULT_TO_EMAIL = 'Your email'
