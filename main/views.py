@@ -9,10 +9,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-#from django.shortcuts import get_object_or_404
+from django.views.generic.base import TemplateView
+from django.views.generic import CreateView
 
 from .models import AdvUser
-from .forms import ChangeUserInfoForm
+from .forms import ChangeUserInfoForm, RegisterUserForm
+
 
 # Create your views here.
 def index(request):
@@ -55,4 +57,12 @@ class BBPasswordChangeView (SuccessMessageMixin, LoginRequiredMixin, PasswordCha
 	template_name = 'main/password_change.html'
 	success_url = reverse_lazy('main:profile')
 	success_message = 'Пароль пользователя изменен'
-			
+
+class RegisterUserView(CreateView):
+	model = AdvUser
+	template_name = 'main/register_user.html'
+	form_class = RegisterUserForm
+	success_url = reverse_lazy('main:register_done')
+
+class RegisterDoneView(TemplateView):
+	template_name = 'main/register_done.html'
